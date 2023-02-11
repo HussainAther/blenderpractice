@@ -36,3 +36,26 @@ def dPotential3(r, *mus):
     T3 = T1 - 1.0/T1**2
     dU = mu1*T2 + mu2*T3 # Equation 3.90
     return dU
+
+
+def Potential(x, *data):
+    #Unpack tuple
+    y, z, mu1, mu2, Vref = data
+    r1 = math.sqrt((x+mu2)**2 + y**2 + z**2)
+    r2 = math.sqrt((x-mu1)**2 + y**2 + z**2)
+    T1 = 1.0/r1 + 0.5*r1**2
+    T2 = 1.0/r2 + 0.5*r2**2
+    # Equation 3.64 in Murray and Dermott
+    U = mu1*T1 + mu2*T2 - 0.5*mu1*mu2 - Vref
+    return U
+
+def Potential2(y, *data):
+    #Unpack tuple
+    x, z, mu1, mu2, Vref = data
+    r1 = math.sqrt((x+mu2)**2 + y**2 + z**2)
+    r2 = math.sqrt((x-mu1)**2 + y**2 + z**2)
+    T1 = 1.0/r1 + 0.5*r1**2
+    T2 = 1.0/r2 + 0.5*r2**2
+    # Equation 3.64 in Murray and Dermott
+    U = mu1*T1 + mu2*T2 - 0.5*mu1*mu2 - Vref
+    return U
