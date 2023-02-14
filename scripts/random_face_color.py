@@ -9,3 +9,9 @@ def getRandomColor():
     green = random()
     blue = random()
     return red, green, blue
+
+def makeMaterials( ob ):
+    for face in ob.data.faces:
+        randcolor = getRandomColor()
+        mat = bpy.data.materials.new( "randmat" )
+        mat.diffuse_color = randcolor
