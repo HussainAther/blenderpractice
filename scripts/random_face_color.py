@@ -15,3 +15,17 @@ def makeMaterials( ob ):
         randcolor = getRandomColor()
         mat = bpy.data.materials.new( "randmat" )
         mat.diffuse_color = randcolor
+
+def assignMats2Ob( ob ):
+    mats = bpy.data.materials
+    # load up the materials into the material slots
+    for mat in mats:
+        bpy.ops.object.material_slot_add()
+        ob.active_material = mat
+ 
+    # tie the loaded up materials o each of the faces
+    i=0
+    faces = ob.data.faces
+    while i < len( faces ):
+        faces[i].material_index = i
+    i+=1
