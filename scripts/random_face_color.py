@@ -29,3 +29,11 @@ def assignMats2Ob( ob ):
     while i < len( faces ):
         faces[i].material_index = i
     i+=1
+
+
+getUnusedRandoms = lambda : [ x for x in bpy.data.materials
+    if x.name.startswith( "randmat" ) and x.users == 0 ]
+
+def clearMaterialSlots( ob ):
+    while len( ob.material_slots ) > 0:
+        bpy.ops.object.material_slot_remove()
